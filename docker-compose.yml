@@ -1,0 +1,8 @@
+services:
+  postgres-mcp-server:
+    build: .
+    image: postgres-mcp-server:latest
+    env_file:
+      - .env
+    stdin_open: true   # keeps stdin open — required for MCP's stdio transport
+    tty: false
