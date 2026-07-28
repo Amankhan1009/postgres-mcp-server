@@ -46,7 +46,9 @@ def get_engine() -> AsyncEngine:
             max_overflow=10,
             pool_pre_ping=True,
             pool_recycle=1800,  # recycle connections every 30 min
-            echo=(settings.environment == "development"),
+            echo=False, # SQL echo writes to stdout, which corrupts MCP's stdio JSON-RPC
+                        # protocol — never enable this when running as an MCP server.
+                        # Use scripts/check_connection.py or a debugger for SQL debugging instead.
         )
         logger.info("Database engine created")
     return _engine
