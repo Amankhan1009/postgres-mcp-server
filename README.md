@@ -129,6 +129,14 @@ This starts the MCP server over stdio transport. To test it interactively:
 npx @modelcontextprotocol/inspector@latest python -m postgres_mcp.server
 ```
 
+## Public MCP Endpoint
+
+The hosted MCP server is available at:
+
+```text
+https://aman-postgres-mcp-server.fastmcp.app/mcp
+```
+
 ## Running with Docker
 
 ```bash
