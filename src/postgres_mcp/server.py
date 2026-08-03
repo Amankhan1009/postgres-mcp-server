@@ -1,11 +1,16 @@
 """
 MCP server entrypoint.
-
-This is the file you actually run to start the server. It creates the
-FastMCP instance, registers every tool module, and starts listening
-for MCP client connections over stdio (the standard transport for
-local MCP servers used by Claude Desktop, Claude Code, etc.).
 """
+
+import sys
+from pathlib import Path
+
+# Ensure the 'src' directory is on the import path, so `postgres_mcp` is
+# importable as a package regardless of how this file is executed —
+# whether via `python -m postgres_mcp.server` (works fine locally) or
+# run directly as a script by a platform like FastMCP Cloud (which
+# otherwise only adds this file's own folder to sys.path, not `src/`).
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from fastmcp import FastMCP
 
